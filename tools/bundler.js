@@ -113,6 +113,17 @@
 //    - node_modules: if Npm.require is called from this file, this is
 //      the path (relative to program.json) of the directory that should
 //      be search for npm modules
+//    - sourceMap: if present, path of a file that contains a source
+//      map for this file, relative to program.json
+//    - sources: if sourceMap present, a map from a a relative path in
+//      the source map (no leading slash) to information about the
+//      source file:
+//      - source: path of this source file if available, relative to
+//        program.json
+//      - package: name of the package from which this file came, if
+//        any (omit if file came from an app)
+//      - sourcePath: original relative path within the source tree of
+//        'package' (or the app) of this source file
 //
 // /config.json:
 //

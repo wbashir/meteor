@@ -158,6 +158,15 @@ var Slice = function (pkg, options) {
   // honored for "static", ignored for "head" and "body", sometimes
   // honored for CSS but ignored if we are concatenating.
   //
+  // sourceMap: Allowed only for "js". If present, a
+  // SourceMapGenerator.
+  //
+  // sources: Only if 'sourceMap' present. A mapping from a relative
+  // source path given in sourceMap (no leading '/') to:
+  // - package: package name, or null for app
+  // - sourcePath: original relative path within 'package' or app
+  // - path: absolute path on disk to the source file
+  //
   // Set only when isBuilt is true.
   self.resources = null;
 
@@ -492,7 +501,9 @@ _.extend(Slice.prototype, {
       return {
         type: "js",
         data: new Buffer(file.source, 'utf8'),
-        servePath: file.servePath
+        servePath: file.servePath,
+        sourceMap: file.sourceMap,
+        sources: file.sources
       };
     });
 
